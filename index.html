@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <title>Iterative GJK: Raycasting</title>
+	<script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    <style>
+		body {
+			background: black;
+			border: none;
+			font-family: Verdana;
+			color:white;
+		}
+		#center_view {
+			display:flex;
+			flex-direction:column;
+			justify-content:center;
+			align-items:center;
+			border: none;
+			gap:10px;
+		}
+		#center_flexbox {
+			display:flex;
+			justify-content:center;
+			align-items:center;
+			border: 3px solid white;
+		}
+		#short {
+			width:750px;
+			margin:2px;
+		}
+		hl {
+			color:orange;
+		}
+	</style>
+	</head>
+	<body>
+    <h1>Asteroids in JS using DGJK and AABB-Trees</h1>
+		<div id="center_view">
+			<a href="https://github.com/CozyHome/cozyhome-asteroids-js" class="hl">Github Repository</a>
+			<iframe frameborder="0" id="sketch" src="asteroids/index.html" scrolling="no" width="625" height="625"></iframe>
+				<p id="short">
+					<hl>SKETCH CONTROLS</hl><br><br>
+					<hl>LEFT CLICK</hl> to place polygonal entities into the scene<br>
+					<hl>MIDDLE CLICK</hl> to erase polygonal entities from the scene<br><br>
+					<hl>W</hl> and <hl>S</hl> to move up and down<br>
+					<hl>A</hl> and <hl>D</hl> to move left and right<br>
+					<hl>Q</hl> to rotate clockwise<br>
+					<hl>E</hl> to rotate counter-clockwise<br><br>
+					<hl>Z</hl> to zoom out<br>
+					<hl>X</hl> to zoom in<br>
+					Make sure to be in focus/click on the window to be able to move.
+				</p>
+				<p id="short">
+					This ended up not using the DGJK(...) for narrowphase contact generation. The problem being that
+					continuous collision detection using my naive raycasting algorithm is horrible for precision. Entities end up intersecting regardless of the techniques used to solve the problem. I assume the issue is much more nuanced than I can handle at the moment. <br><br>I have other things to do and this isn't a priority right now. At the moment, a broadphase quadtree spatial partitioning data structure is used to sort for locality and assist in the nearest neighbors sub-problem for moving particles. <br><br>Bounding boxes are inflated/supported via minkowski addition of a translation vector and the current frame's AABB. This box is queried against the quadtree and is notified/told all intersecting potential contact pairs. It was supposed to serve as a broadphase step, but ended up being the entire resolver due to floating point imprecision induced by the gilbert johnson keerthi. <br><br>I'm a little upset but overall the project turned out successful for what I wanted to achieve.  
+				</p>
+		</div>
+	</body>
+</html>

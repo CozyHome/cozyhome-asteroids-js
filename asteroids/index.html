@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/addons/p5.sound.min.js"></script>
+		<script src="vector.js"></script>	<!-- mini vector library 	-->
+		<script src="matrix.js"></script>	<!-- mini vector library 	-->
+		<script src="dgjk.js"></script>		<!-- dgjk library 			-->
+		<script src="state.js"></script>	<!-- state machine library 	-->
+		<script src="aabb.js"></script>		<!-- axial box library   	-->
+		<script src="qtree.js"></script>	<!-- quadtree box library   -->
+		<script src="hull.js"></script>		<!-- convex hull library 	-->
+        <script src="main.js"></script>		<!-- main execution (where p5 instances itself) -->
+        <style></style>
+    </head>
+    <style>
+		body {
+			background: black;
+			border: none;
+			font-family: Verdana;
+			color:white;
+		}
+		#center_view {
+			display:flex;
+			flex-direction:column;
+			justify-content:center;
+			align-items:center;
+			border: none;
+			gap:20px;
+		}
+		#center_flexbox {
+			display:flex;
+			justify-content:center;
+			align-items:center;
+			border: 3px solid white;
+		}
+       	#controls {
+           	margin: auto;
+            text-align: center;
+            padding-top: 20px;
+        }
+		.nomargin {
+			margin-top:4px;
+			margin-bottom:4px;
+		}
+		.text {
+			gap:15px;
+			text-align:center;
+		 }
+		hl {
+			color:yellow;
+		}
+		hl2 {
+			color:orange;
+		}
+		hl3 {
+			color:red;
+		}
+	</style>
+    <body>
+			<div id="center_view">
+				<div id="center_flexbox"></div>
+			</div>
+	</body>
+</html>
